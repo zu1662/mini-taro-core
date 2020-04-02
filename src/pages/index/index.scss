@@ -1,13 +1,14 @@
 .index {
   flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   width: 100%;
   .header {
     padding: 20px 10px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 0 20px 2px rgba(0,0,0,.09);
+    box-shadow: $shadow-card;
     .tab {
       flex: 1;
       font-size: 25px;
@@ -30,7 +31,7 @@
           width: 40%;
           height: 5px;
           transform: scaleX(0.0001);
-          background-color: #409EFF;
+          background-color: $primary-color;
         }
 
         &.active::after {
@@ -41,8 +42,74 @@
   }
 
   .body {
-    padding: 10px;
+    min-height: calc(100% - 120px);
+    padding: 20px;
     background-color: #eee;
-    
+    .non-data {
+      margin-top: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+    .repos {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: $shadow-card;
+      border-radius: 10px;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      .repos-title {
+        font-size: 35px;
+        font-weight: 400;
+        color: $primary-color;
+        vertical-align: text-bottom;
+        .icon {
+          margin-right: 8px;
+        }
+      }
+
+      .repos-intro {
+        margin-top: 10px;
+        font-size: 25px;
+      }
+
+      .repos-info {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 22px;
+
+        .language-box {
+          margin-right: 30px;
+          .language-type {
+            margin-right: 6px;
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+          }
+        }
+        .star, .fork {
+          margin-right: 30px;
+          .icon {
+            margin-right: 6px;
+          }
+        }
+      }
+
+      .repos-stars {
+        margin-top: 10px;
+        font-size: 22px;
+        .icon {
+          margin-right: 6px;
+        }
+      }
+    }
   }
 }
