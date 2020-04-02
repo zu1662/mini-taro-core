@@ -1,5 +1,14 @@
 import Taro, { Component } from '@tarojs/taro'
+import { Provider } from '@tarojs/redux'
+import log from '@/utils/log'
 import Index from './pages/index'
+
+import configStore from './store'
+
+// 引入全局样式
+import '@/styles/index.scss'
+import '@/styles/iconfont.scss'
+import 'taro-ui/dist/style/index.scss'
 
 import './app.scss'
 
@@ -9,15 +18,12 @@ import './app.scss'
 //   require('nerv-devtools')
 // }
 
+// 设置log输出信息 
+Taro.log = log
+
+const store = configStore()
+
 class App extends Component {
-
-  componentDidMount () {}
-
-  componentDidShow () {}
-
-  componentDidHide () {}
-
-  componentDidCatchError () {}
 
   config = {
     pages: [
@@ -31,11 +37,21 @@ class App extends Component {
     }
   }
 
+  componentDidMount () {}
+
+  componentDidShow () {}
+
+  componentDidHide () {}
+
+  componentDidCatchError () {}
+
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render () {
     return (
-      <Index />
+      <Provider store={store}>
+        <Index />
+      </Provider>
     )
   }
 }

@@ -1,3 +1,4 @@
+const path = require('path');
 const config = {
   projectName: 'mini-taro-core',
   date: '2020-4-2',
@@ -9,6 +10,15 @@ const config = {
   },
   sourceRoot: 'src',
   outputRoot: 'dist',
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
+  },
+  sass: {
+    resource: [
+      'src/styles/var.scss',
+    ],
+    projectDirectory: path.resolve(__dirname, '..')
+  },
   babel: {
     sourceMap: true,
     presets: [
@@ -53,6 +63,7 @@ const config = {
     }
   },
   h5: {
+    esnextModules: ['taro-ui'],
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
@@ -64,7 +75,13 @@ const config = {
             'Android >= 4.1',
             'ios >= 8'
           ]
-        }
+        },
+        url: {
+          enable: true,
+          config: {
+            limit: 10240 // 设定转换尺寸上限
+          }
+        },
       },
       cssModules: {
         enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
