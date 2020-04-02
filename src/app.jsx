@@ -8,7 +8,9 @@ import configStore from './store'
 // 引入全局样式
 import '@/styles/index.scss'
 import '@/styles/iconfont.scss'
-import 'taro-ui/dist/style/index.scss'
+
+// taro UI 全局样式，可在页面css中单独引用多用到的样式
+// import 'taro-ui/dist/style/index.scss'
 
 import './app.scss'
 

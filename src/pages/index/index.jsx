@@ -8,7 +8,8 @@ import './index.scss'
 class Index extends Component {
 
   config = {
-    navigationBarTitleText: '首页'
+    navigationBarTitleText: '首页',
+    addGlobalClass: true
   }
 
   state = {
@@ -52,7 +53,8 @@ class Index extends Component {
   }
 
   render () {
-    const listItems = this.state.datas.map((data) =>
+    const {current, datas} = this.state
+    const listItems = datas.map((data) =>
       <View className='repos' key={data.projectURL}>
         <View className='repos-title'>
           <AtIcon prefixClass='icon' value='bookmark' size='18' color='#666'></AtIcon>
@@ -86,19 +88,19 @@ class Index extends Component {
         <View className='header'>
           <AtIcon value='filter' size='20' color='#666'></AtIcon>
           <View className='tab'>
-            <view className={this.state.current? 'tab-item' : 'tab-item active'} onClick={_ => this.handleTab(0)}>Repos</view>
-            <view className={this.state.current? 'tab-item active' : 'tab-item'} onClick={ _ => this.handleTab(1)}>Devers</view>
+            <View className={current? 'tab-item' : 'tab-item active'} onClick={_ => this.handleTab(0)}>Repos</View>
+            <View className={current? 'tab-item active' : 'tab-item'} onClick={ _ => this.handleTab(1)}>Devers</View>
           </View>
           <AtIcon value='search' size='20' color='#666'></AtIcon>
         </View>
         <View className='body'>
-          {this.state.datas.length == 0 ? 
+          {datas.length == 0 && 
             <View className='non-data'>
-              <Image src={nonPic} />
+              <Image className='non-img' src={nonPic} />
               <Text>Oops! Nothing here...</Text>
-            </View> :
-            {listItems}
+            </View>
           }
+          {datas.length > 0 && listItems}
         </View>
       </View>
     )
