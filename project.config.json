@@ -2,7 +2,7 @@
 	"miniprogramRoot": "dist/",
 	"projectname": "mini-taro-core",
 	"description": "基于taro的小程序基础框架",
-	"appid": "wxa71d53df4b3b5827",
+	"appid": "wx63ad7c68c801e1eb",
 	"setting": {
 		"urlCheck": false,
 		"es6": false,
